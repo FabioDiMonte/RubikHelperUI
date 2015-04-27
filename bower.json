@@ -14,6 +14,6 @@
     "target"
   ],
   "devDependencies": {
-    "PanelUI" : "https://github.com/FabioDiMonte/PanelUI.git#release_0.1.0"
+    "PanelUI" : "https://github.com/FabioDiMonte/PanelUI.git#v0.1.0"
   }
 }
