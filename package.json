@@ -1,0 +1,21 @@
+{
+  "name": "rubikhelperui",
+  "title": "RubikHelperUI",
+  "description": "PanelUI extension for RubikHelper page",
+  "version": "0.1.0",
+  "author": {
+    "name": "FabioDiMonte"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FabioDiMonte/RubikHelperUI.git"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-copy": "^0.8.0"
+  }
+}

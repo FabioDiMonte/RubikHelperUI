@@ -1,0 +1,19 @@
+{
+  "name": "RubikHelperUI",
+  "version": "0.1.0",
+  "homepage": "https://github.com/FabioDiMonte/RubikHelperUI",
+  "authors": [
+    "Fabio Di Monte <fdimonte@expedia.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "dependencies",
+    "build",
+    "target"
+  ],
+  "devDependencies": {
+    "PanelUI" : "https://github.com/FabioDiMonte/PanelUI.git#v0.1.0"
+  }
+}
