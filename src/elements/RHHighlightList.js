@@ -38,6 +38,7 @@ var RHHighlightList = (function($, PUIElement){
             .append(highlightChoice('highlight','slice S',['U','R','D','L','UL','UR','DR','DL']))
             .append(highlightChoice('highlight','parity',['DF','DFR','UB','UBR']))
             .append(highlightChoice('highlight','J-perm',['ULB','UL','UFL','UF']))
+            .append(highlightChoice('highlight','N-perm',['URF,UR,ULB,UL']))
             .append(highlightChoice('highlight','orient 2 edges',['UF','UB']))
             .append(highlightChoice('highlight','orient 4 edges',['UF','UB','UL','UR']))
             .append(highlightChoice('highlight','orient corner',['UFL']))
