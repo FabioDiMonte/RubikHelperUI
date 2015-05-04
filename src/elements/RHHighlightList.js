@@ -25,28 +25,37 @@ var RHHighlightList = (function($, PUIElement){
      * *******************************/
 
     RHHighlightList.prototype.getElement = function() {
-        return $('<ul/>')
-            .append(highlightChoice('render','none','none',true))
-            .append(highlightChoice('highlight','face U',['ULB','UB','UBR','UL','U','UR','UFL','UF','URF']))
-            .append(highlightChoice('highlight','face F',['FLU','FU','FUR','FL','F','FR','FDL','FD','FRD']))
-            .append(highlightChoice('highlight','face R',['RFU','RU','RUB','RF','R','RB','RDF','RD','RBD']))
-            .append(highlightChoice('highlight','face D',['DLF','DF','DFR','DL','D','DR','DBL','DB','DRB']))
-            .append(highlightChoice('highlight','face B',['BRU','BU','BUL','BR','B','BL','BDR','BD','BLD']))
-            .append(highlightChoice('highlight','face L',['LBU','LU','LUF','LB','L','LF','LDB','LD','LFD']))
-            .append(highlightChoice('highlight','slice M',['F','U','B','D','UF','UB','DB','DF']))
-            .append(highlightChoice('highlight','slice E',['F','R','B','L','FL','FR','BL','BR']))
-            .append(highlightChoice('highlight','slice S',['U','R','D','L','UL','UR','DR','DL']))
-            .append(highlightChoice('highlight','parity',['DF','DFR','UB','UBR']))
-            .append(highlightChoice('highlight','J-perm',['ULB','UL','UFL','UF']))
-            .append(highlightChoice('highlight','N-perm',['URF,UR,ULB,UL']))
-            .append(highlightChoice('highlight','orient 2 edges',['UF','UB']))
-            .append(highlightChoice('highlight','orient 4 edges',['UF','UB','UL','UR']))
-            .append(highlightChoice('highlight','orient corner',['UFL']))
-            .append(highlightChoice('highlight','custom','custom'));
+        return $('<div/>')
+            .append($('<label/>')
+                .append( $('<input/>').attr('type','checkbox').attr('id','ic-highlight-colors') )
+                .append( $('<span/>').text('show colors') )
+            )
+            .append($('<ul/>')
+                .append(highlightChoice('render','none','none',true))
+                .append(highlightChoice('highlight','face U',['ULB','UB','UBR','UL','U','UR','UFL','UF','URF']))
+                .append(highlightChoice('highlight','face F',['FLU','FU','FUR','FL','F','FR','FDL','FD','FRD']))
+                .append(highlightChoice('highlight','face R',['RFU','RU','RUB','RF','R','RB','RDF','RD','RBD']))
+                .append(highlightChoice('highlight','face D',['DLF','DF','DFR','DL','D','DR','DBL','DB','DRB']))
+                .append(highlightChoice('highlight','face B',['BRU','BU','BUL','BR','B','BL','BDR','BD','BLD']))
+                .append(highlightChoice('highlight','face L',['LBU','LU','LUF','LB','L','LF','LDB','LD','LFD']))
+                .append(highlightChoice('highlight','slice M',['F','U','B','D','UF','UB','DB','DF']))
+                .append(highlightChoice('highlight','slice E',['F','R','B','L','FL','FR','BL','BR']))
+                .append(highlightChoice('highlight','slice S',['U','R','D','L','UL','UR','DR','DL']))
+                .append(highlightChoice('highlight','parity',['DF','DFR','UB','UBR']))
+                .append(highlightChoice('highlight','J-perm',['ULB','UL','UFL','UF']))
+                .append(highlightChoice('highlight','N-perm',['URF,UR,ULB,UL']))
+                .append(highlightChoice('highlight','orient 2 edges',['UF','UB']))
+                .append(highlightChoice('highlight','orient 4 edges',['UF','UB','UL','UR']))
+                .append(highlightChoice('highlight','orient corner',['UFL']))
+                .append(highlightChoice('highlight','custom','custom'))
+            );
     };
 
     RHHighlightList.prototype.initEvents = function() {
-        this.setEvent('change','input',function(e){
+        this.setEvent('change','#ic-highlight-colors',function(e){
+            this.trigger('showcolors',$(e.currentTarget).prop('checked'));
+        });
+        this.setEvent('change','input[type=radio]',function(e){
             this.trigger('changelist',$(e.currentTarget).val());
         });
     };
@@ -56,12 +65,12 @@ var RHHighlightList = (function($, PUIElement){
             return ($(e).text()==value);
         });
         if($el.length==1){
-            $el.find('input').prop('checked',true);
+            $el.find('input[type=radio]').prop('checked',true);
         }
     };
 
     RHHighlightList.prototype.getValue = function() {
-        return this.$el.find('input:checked').val();
+        return this.$el.find('input[type=radio]:checked').val();
     };
 
     /* *******************************

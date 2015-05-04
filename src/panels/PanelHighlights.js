@@ -34,6 +34,7 @@ var PanelHighlights = (function(PUIPanel, PUIPanelComponent, PUIPanelComponentGr
         var highlight_pieces_list = new RHHighlightPieces();
         highlight_pieces.addChild(highlight_pieces_list);
 
+        highlight_predefined_list.on('showcolors',highlightColorsHandler.bind(this));
         highlight_predefined_list.on('changelist',highlightHandler.bind(this));
         highlight_pieces_list.on('changepiece',highlightHandler.bind(this));
 
@@ -70,6 +71,11 @@ var PanelHighlights = (function(PUIPanel, PUIPanelComponent, PUIPanelComponentGr
 
         executeHighlight.call(this,data.split(','));
 
+    }
+    
+    function highlightColorsHandler(data,event) {
+        if(!this.parent.isocube) return;
+        this.parent.isocube.highlightColor(data);
     }
 
     return PanelHighlights;
